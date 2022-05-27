@@ -2,7 +2,11 @@ name: Code Place_Remember
 
 on:
   push:
-    branches: [ develop ]
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   build:
