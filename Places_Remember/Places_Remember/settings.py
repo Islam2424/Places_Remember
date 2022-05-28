@@ -28,8 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'App',
-]
+    'app.apps.AppConfig',
+    'social_django',
+ ]
+# Application definition
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,6 +120,23 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+# Секретные ключи Facebook and VK
+SOCIAL_AUTH_FACEBOOK_KEY = '893846865350274'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'e01139a79e30948b9d5cb90b90febea1'
+
+SOCIAL_AUTH_VK_KEY = '8178897'
+SOCIAL_AUTH_VK_SECRET = '3ot4HIAQXCUGBp4cFSKP'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
