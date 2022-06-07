@@ -64,6 +64,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', # add this
+                # 'social_django.context_processors.login_redirect', # add this
+
             ],
         },
     },
@@ -119,24 +122,32 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-SOCIAL_AUTH_JSONFIELD_ENABLED = True
-# Секретные ключи Facebook and VK
-SOCIAL_AUTH_FACEBOOK_KEY = '893846865350274'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'e01139a79e30948b9d5cb90b90febea1'
 
-SOCIAL_AUTH_VK_KEY = '8178897'
-SOCIAL_AUTH_VK_SECRET = '3ot4HIAQXCUGBp4cFSKP'
+# Секретные ключи Facebook and VK
+SOCIAL_AUTH_TELEGRAM_KEY = '16396509'
+SOCIAL_AUTH_TELEGRAM_SECRET = '5ebe32ff35309011b692c4c4e06eef7e'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '8186490'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'xfYIAVFAVUHiGHO67Agl'
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.vk.VKOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.vk.VKOAuth2',                 # бэкэнд авторизации через Vkontakte
+    'social_core.backends.telegram.TelegramOAuth2',     # бэкэнд авторизации через facebook
+    'django.contrib.auth.backends.ModelBackend',        # бэкэнд классической аутентификации
 ]
-
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+# Логины и редиректы
+LOGIN_URL = '/auth/login/vk-oauth2/'
+LOGIN_REDIRECT_URL = '/home'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email','photos']
 LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = '/'
 
+CLIENT_SECRET = ''
+CLIENT_ID = ''
+REDIRECT_URL = ''
+TG_BOT_TOKEN = ''
+
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

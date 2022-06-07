@@ -12,15 +12,21 @@
     </head>
     <body>
       <header>
-              {% block content %}
-              {% endblock %}
+           <div class="navbar expand-sm bg-success">
+             <nav class="container-fluid ">
+                 <div class="navbar-header">
+                     <h1 class="ms-3 my-2 text-white">Places Remember</h1>
+                 </div>
+                {% block content %}
+                {% endblock %}
+             </nav>
+         </div>
       </header>
               <main>
-                  <div class="container-fluid-sm ">
+                  <div class="container-fluid-sm pt-5">
                       <img src="static/img/3.jpg" class="rounded-circle mx-auto d-block" alt="Cinque Terre">
                       <h1 class="my-5 display-1 text-center">Save your first impression of the places you visit</h1>
                   </div>
-
               </main>
     </body>
 </html>

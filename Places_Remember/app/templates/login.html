@@ -3,19 +3,13 @@
 {% block title %} Sign in {% endblock %}
 
 {% block content %}
-     <nav class="navbar expand-sm bg-success">
-         <div class="container-fluid ">
-             <div class="navbar-header">
-                 <h1 class="ms-3 my-2 text-white">Places Remember</h1>
-             </div>
-             <button class="btn-lg btn-outline-dark">
-               <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'social:begin' 'facebook' %}"> Login with Facebook &sol;</a></li>
-                <li class="nav-item">
-                    <li><a class="nav-link" href="#">VK</a></li>
-               </ul>
-             </button>
-         </div>
-     </nav>
+<div class="btn-group btn-lg">
+     <button class="btn-outline-secondary"><a class="nav-link" href="{% url 'social:begin' 'telegram-oauth2' %}"> Login with Telegram</a>
+         {% csrf_token %}
+     </button>
+     <button class="btn-outline-secondary">
+         <a class="nav-link" href="{% url 'social:begin' 'vk-oauth2' %}">Login with VK</a>
+         {% csrf_token %}
+     </button>
+</div>
 {% endblock %}
