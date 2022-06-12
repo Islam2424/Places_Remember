@@ -8,16 +8,14 @@ blocks:
   - name: Build
     task:
       jobs:
-        - name: PIp
+        - name: pip
           commands:
-            - 'version: v1.0'
-            - 'commands:'
-            - '- python 3.9'
-            - '- checkout'
-            - '- mkdir .pip_cache'
-            - '- cache restore'
-            - '- pip install --cache-dir .pip_cache -r requirements.txt'
-            - '- cache store'
+            - sem-version python 3.9
+            - checkout
+            - mkdir .pip_cache
+            - cache restore
+            - pip install --cache-dir .pip_cache -r requirements.txt
+            - cache store
   - name: Test
     task:
       jobs: []
