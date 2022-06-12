@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="btn-group btn-lg">
-     <button class="btn-outline-secondary"><a class="nav-link" href="{% url 'social:begin' 'telegram-oauth2' %}"> Login with Telegram</a>
+     <button class="btn-outline-secondary"><a class="nav-link" href="{% url 'social:begin' 'github' %}"> Login with github</a>
          {% csrf_token %}
      </button>
      <button class="btn-outline-secondary">

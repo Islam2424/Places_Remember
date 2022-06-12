@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Places_Remember.urls'
@@ -65,7 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends', # add this
-                # 'social_django.context_processors.login_redirect', # add this
+                'social_django.context_processors.login_redirect', # add this
 
             ],
         },
@@ -123,31 +124,23 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-# Секретные ключи Facebook and VK
-SOCIAL_AUTH_TELEGRAM_KEY = '16396509'
-SOCIAL_AUTH_TELEGRAM_SECRET = '5ebe32ff35309011b692c4c4e06eef7e'
+# Секретные ключи:
+SOCIAL_AUTH_GITHUB_KEY = 'b289c6676ef679120d57'
+SOCIAL_AUTH_GITHUB_SECRET = '4301ef22710bd5c49667dd6e3c7e9a27eb83960d'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '8186490'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'xfYIAVFAVUHiGHO67Agl'
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.vk.VKOAuth2',                 # бэкэнд авторизации через Vkontakte
-    'social_core.backends.telegram.TelegramOAuth2',     # бэкэнд авторизации через facebook
+    'social_core.backends.vk.VKOAuth2',                 # бэкэнд авторизации Vkontakte
+    'social_core.backends.github.GithubOAuth2',         # бэкэнд авторизации github
     'django.contrib.auth.backends.ModelBackend',        # бэкэнд классической аутентификации
 ]
+
 # Логины и редиректы
-LOGIN_URL = '/auth/login/vk-oauth2/'
-LOGIN_REDIRECT_URL = '/home'
-SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email','photos']
-LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = '/'
-
-CLIENT_SECRET = ''
-CLIENT_ID = ''
-REDIRECT_URL = ''
-TG_BOT_TOKEN = ''
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 
 
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
