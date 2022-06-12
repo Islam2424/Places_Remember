@@ -10,4 +10,4 @@ blocks:
       jobs:
         - name: 'Pip '
           commands:
-            - checkoute
+            - checkout
