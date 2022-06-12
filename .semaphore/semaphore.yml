@@ -10,7 +10,6 @@ blocks:
       jobs:
         - name: pip
           commands:
-            - python 3.9
             - checkout
   - name: Test
     task:
