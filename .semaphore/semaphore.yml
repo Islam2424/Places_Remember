@@ -11,6 +11,3 @@ blocks:
         - name: pip
           commands:
             - checkout
-  - name: Test
-    task:
-      jobs: []
