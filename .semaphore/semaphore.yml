@@ -5,14 +5,17 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 blocks:
-  - name: 'Block #1'
+  - name: Build
     task:
       jobs:
-        - name: 'Pip '
+        - name: PIp
           commands:
-            - python 3.9
+            - sem-version python 3.9
             - checkout
-            - mkdir pip_cache
+            - mkdir .pip_cache
+            - cache restore
+            - pip install --cache-dir .pip_cache -r requirements.txt
+            - cache store
   - name: Test
     task:
       jobs: []
