@@ -10,7 +10,7 @@ blocks:
       jobs:
         - name: pip
           commands:
-            - sem-version python 3.9
+            - python 3.9
             - checkout
   - name: Test
     task:
