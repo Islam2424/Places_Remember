@@ -19,7 +19,7 @@ blocks:
   - name: Test
     task:
       jobs:
-        - name: Prologue
+        - name: Unit test
           commands:
             - sem-version python 3.9
             - checkout
@@ -28,4 +28,11 @@ blocks:
             - cd Places_Remember
             - python manage.py makemigrations
             - python manage.py migrate
-            - python manage.py test
+        - name: Deploy Checklist
+          commands:
+            - cd Places_Remember
+            - python manage.py check --deploy
+        - name: style
+          commands:
+            - pip install flake8
+            - flake8 Places_Remember/ --max-line-length=127
