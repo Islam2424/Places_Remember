@@ -8,6 +8,6 @@ blocks:
   - name: 'Block #1'
     task:
       jobs:
-        - name: 'pip '
+        - name: 'Pip '
           commands:
-            - pip update
+            - checkoute
