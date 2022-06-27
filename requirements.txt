@@ -1,6 +1,5 @@
 Django==4.0
 Pillow==9.1
-social-auth-app-django
 python-social-auth
 Markdown==3.3.4
 requests
