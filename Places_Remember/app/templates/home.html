@@ -31,10 +31,19 @@
 <!--                    <h1>{{ email }}</h1>-->
                 <div>
                 <h2>У вас нет ни одного воспоминания</h2>
+                <section>
                 <button class="btn-outline-secondary btn-lg">
-                        <a >Добавить воспоминание</a>
+                        <a>Добавить воспоминание</a>
                 </button>
+                <img src="{{ form.impression }}">
+                <form action="/home" method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="submit" value="Добавить фото">
+                </form>
+                </section>
             </div>
+
         </div>
     </body>
 </html>

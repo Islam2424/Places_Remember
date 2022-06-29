@@ -1,5 +1,4 @@
 from django.contrib import admin
+from .models import Impression, AdvUser
 
-from .models import Remembers
-
-admin.site.register(Remembers)
+admin.site.register(Impression)
